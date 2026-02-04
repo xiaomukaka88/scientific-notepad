@@ -1,0 +1,24 @@
+{
+  "name": "scientific-notepad",
+  "version": "0.1.0",
+  "description": "科学记事本",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.10.1"
+  }
+}
