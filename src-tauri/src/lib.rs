@@ -22,16 +22,12 @@ pub fn run() {
 #[tauri::command]
 fn set_opacity(window: tauri::Window, opacity: f64) -> Result<(), String> {
   window
-    .set_decorations(false)
-    .map_err(|e| format!("Failed to set decorations: {}", e))?;
-
-  window
     .set_ignore_cursor_events(false)
     .map_err(|e| format!("Failed to set cursor events: {}", e))?;
 
   window
-    .set_opacity(opacity)
-    .map_err(|e| format!("Failed to set opacity: {}", e))?;
+    .set_decorations(false)
+    .map_err(|e| format!("Failed to set decorations: {}", e))?;
 
   Ok(())
 }
