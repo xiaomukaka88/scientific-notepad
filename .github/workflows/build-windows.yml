@@ -30,14 +30,11 @@ jobs:
     - name: Install frontend dependencies
       run: npm install
 
+    - name: Install Tauri CLI
+      run: npm install -g @tauri-apps/cli
+
     - name: Build frontend
       run: npm run build
-
-    - name: Install WebView2 (Windows)
-      run: |
-        curl -L -o webview2_installer.exe https://go.microsoft.com/fwlink/p/?LinkId=2124703
-        Start-Process -Wait -FilePath webview2_installer.exe -ArgumentList '/silent', '/install'
-        Remove-Item webview2_installer.exe
 
     - name: Build Tauri app
       run: npm run tauri:build
