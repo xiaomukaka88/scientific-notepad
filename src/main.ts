@@ -35,16 +35,20 @@ class App {
     localStorage.setItem('appState', JSON.stringify(this.state));
   }
 
-  async setOpacity(value: number) {
+  setOpacity(value: number) {
     this.state.opacity = value;
     this.saveState();
-    await this.invokeTauriCommand('set_opacity', { opacity: value / 100 });
+    // Tauri v2 does not support set_opacity, using CSS instead
+    const app = document.querySelector('.container') as HTMLElement;
+    if (app) {
+      app.style.opacity = (value / 100).toString();
+    }
   }
 
-  async setAlwaysOnTop(value: boolean) {
+  setAlwaysOnTop(value: boolean) {
     this.state.alwaysOnTop = value;
     this.saveState();
-    await this.invokeTauriCommand('set_always_on_top', { alwaysOnTop: value });
+    this.invokeTauriCommand('set_always_on_top', { alwaysOnTop: value });
   }
 
   async invokeTauriCommand(cmd: string, args: any) {
